@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор суми з історією операцій</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 40px;
+            color: #333;
+        }
+
+        .calculator-card {
+            background-color: #ffffff;
+            width: 400px;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        .inputs-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        input[type="number"] {
+            width: 90px;
+            padding: 8px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        #result {
+            color: #27ae60;
+            font-size: 1.3rem;
+        }
+
+        #calculate {
+            width: 100%;
+            padding: 10px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        #calculate:hover {
+            background-color: #2980b9;
+        }
+
+        .history-panel {
+            margin-top: 25px;
+            border: 2px solid #3498db;
+            border-radius: 6px;
+            padding: 15px;
+            background-color: #f8fafc;
+        }
+
+        .history-panel h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            color: #2c3e50;
+            border-bottom: 1px solid #dce4ec;
+            padding-bottom: 5px;
+        }
+
+        #history {
+            list-style-type: square;
+            padding-left: 20px;
+            margin: 0;
+            max-height: 180px;
+            overflow-y: auto;
+        }
+
+        #history li {
+            padding: 4px 0;
+            font-size: 0.95rem;
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calculator-card">
+        <h2>Калькулятор суми</h2>
+
+        <div class="inputs-container">
+            <input type="number" id="value1" placeholder="Число 1" value="0">
+            <span>+</span>
+            <input type="number" id="value2" placeholder="Число 2" value="0">
+            <span>=</span>
+            <span id="result">0</span>
+        </div>
+
+        <button id="calculate" onclick="calculate()">Порахувати</button>
+
+        <div class="history-panel">
+            <h3>Історія</h3>
+            <ul id="history"></ul>
+        </div>
+    </div>
+
+    <script>
+        const input1 = document.getElementById("value1");
+        const input2 = document.getElementById("value2");
+        const resultElement = document.getElementById("result");
+        const historyContainer = document.getElementById("history");
+
+        function calculate() {
+            const num1 = Number(input1.value);
+            const num2 = Number(input2.value);
+
+            if (isNaN(num1) || isNaN(num2)) {
+                return;
+            }
+
+            const sum = num1 + num2;
+            resultElement.textContent = sum;
+
+            const newHistoryItem = document.createElement("li");
+            newHistoryItem.textContent = `${num1} + ${num2} = ${sum}`;
+            historyContainer.appendChild(newHistoryItem);
+        }
+    </script>
+</body>
+</html>
