@@ -3,280 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вікіпедія — Головна сторінка</title>
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Lato, Helvetica, Arial, sans-serif;
-            background-color: #eaecf0;
-            color: #202122;
-        }
-
-        *, *:before, *:after {
-            box-sizing: inherit;
-        }
-
-        .layout-table {
-            width: 100%;
-            height: 100%;
-            border-collapse: collapse;
-            table-layout: fixed;
-        }
-
-        .col-sidebar {
-            width: 200px;
-        }
-
-        .col-main {
-            width: auto;
-        }
-
-        .header-row {
-            height: 80px;
-        }
-
-        .header-cell {
-            border: 2px solid #36536d;
-            background-color: #1e3a5f;
-            text-align: center;
-            vertical-align: middle;
-            font-size: 1.6rem;
-            font-weight: bold;
-            color: #ffffff;
-            letter-spacing: 0.5px;
-        }
-
-        .sidebar-cell {
-            border: 2px solid #a2a9b1;
-            background-color: #f8f9fa;
-            vertical-align: top;
-            padding: 15px;
-        }
-
-        .sidebar-cell h3 {
-            font-size: 1.05rem;
-            margin-top: 0;
-            margin-bottom: 12px;
-            border-bottom: 2px solid #1e3a5f;
-            padding-bottom: 4px;
-            color: #1e3a5f;
-        }
-
-        .sidebar-cell ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .sidebar-cell li {
-            margin-bottom: 10px;
-        }
-
-        .sidebar-cell a {
-            color: #2a65a0;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .sidebar-cell a:hover {
-            text-decoration: underline;
-            color: #1e3a5f;
-        }
-
-        .content-cell {
-            border: 2px solid #a2a9b1;
-            background-color: #ffffff;
-            vertical-align: top;
-            padding: 20px;
-        }
-
-        .footer-row {
-            height: 32px;
-        }
-
-        .footer-cell {
-            border: 2px solid #36536d;
-            background-color: #1e3a5f;
-            text-align: center;
-            vertical-align: middle;
-            font-size: 0.85rem;
-            color: #e0e6ed;
-        }
-
-        .card {
-            background-color: #fdfdfd;
-            border: 1px solid #c8ccd1;
-            border-top: 4px solid #1e3a5f;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            width: 100%;
-            padding: 24px;
-            box-sizing: border-box;
-        }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-            border-bottom: 1px solid #eaecf0;
-            padding-bottom: 10px;
-        }
-
-        .card-title {
-            font-size: 1.6rem;
-            font-weight: 600;
-            margin: 0;
-            color: #1e3a5f;
-        }
-
-        .card-dots {
-            font-weight: bold;
-            font-size: 1.3rem;
-            letter-spacing: 1px;
-            color: #54595d;
-        }
-
-        .card-body {
-            margin-bottom: 24px;
-        }
-
-        .article-image {
-            float: right;
-            margin-left: 20px;
-            margin-bottom: 15px;
-            width: 220px;
-            height: auto;
-            border: 1px solid #a2a9b1;
-            border-radius: 4px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            display: block;
-        }
-
-        .article-paragraph {
-            font-size: 1rem;
-            line-height: 1.6;
-            margin: 0 0 16px 0;
-            color: #202122;
-        }
-
-        .card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            clear: both;
-            padding-top: 12px;
-            border-top: 1px solid #eaecf0;
-        }
-
-        .btn-read-more {
-            display: inline-block;
-            background-color: #1e3a5f;
-            color: #ffffff;
-            border: none;
-            border-radius: 3px;
-            padding: 9px 18px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-
-        .btn-read-more:hover {
-            background-color: #2a65a0;
-            text-decoration: none;
-        }
-
-        .link-all {
-            font-size: 0.9rem;
-            font-weight: bold;
-            color: #2a65a0;
-            text-decoration: none;
-        }
-
-        .link-all:hover {
-            text-decoration: underline;
-        }
-
-        .article-title-link {
-            font-weight: bold;
-            color: #2a65a0;
-            text-decoration: none;
-        }
-
-        .article-title-link:hover {
-            text-decoration: underline;
-        }
-
-        .content-cell a {
-            color: #2a65a0;
-            text-decoration: none;
-        }
-
-        .content-cell a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <title>Типи даних</title>
 </head>
 <body>
+    <script>
+        // Завдання 1
 
-    <table class="layout-table">
-        <colgroup>
-            <col class="col-sidebar">
-            <col class="col-main">
-        </colgroup>
+        function printTypeInfo(expressionString, value) {
+            console.log(`${expressionString} -> Значення: ${value} (Тип: ${typeof value})`);
+        }
 
-        <tr class="header-row">
-            <td colspan="2" class="header-cell">
-                Вікіпедія — Вільна енциклопедія
-            </td>
-        </tr>
+        printTypeInfo('"10" + 5', "10" + 5);
+        printTypeInfo('"10" - 5', "10" - 5);
+        printTypeInfo('"10" * "2"', "10" * "2");
+        printTypeInfo('10 + true', 10 + true);
+        printTypeInfo('10 + false', 10 + false);
+        printTypeInfo('Number("125 грн")', Number("125 грн"));
+        printTypeInfo('Number("")', Number(""));
+        printTypeInfo('Boolean("false")', Boolean("false"));
+        printTypeInfo('Boolean("")', Boolean(""));
 
-        <tr>
-            <td class="sidebar-cell">
-                <h3>Навігація</h3>
-                <ul>
-                    <li><a href="#">Головна сторінка</a></li>
-                    <li><a href="#">Поточні події</a></li>
-                    <li><a href="#">Нові редагування</a></li>
-                    <li><a href="#">Випадкова стаття</a></li>
-                </ul>
-            </td>
 
-            <td class="content-cell">
-                <div class="card">
-                    <div class="card-header">
-                        <h2 class="card-title">Вибрана стаття</h2>
-                        <span class="card-dots">...</span>
-                    </div>
+        // Завдання 2
+        const orderItems = [
+            { Назва: "Ноутбук", price: 25000, quantity: 1 },
+            { Назва: "Мишка", price: 600, quantity: 2 },
+            { Назва: "Клавіатура", price: 1500, quantity: 1 }
+        ];
 
-                    <div class="card-body">
-                        <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/NGC_4414_%28NASA-med%29.jpg/250px-NGC_4414_%28NASA-med%29.jpg?utm_source=uk.wikipedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail" alt="Галактика" class="article-image">
-                        
-                        <p class="article-paragraph">
-                            <a href="#" class="article-title-link">Галактика</a> — велика космічна система <a href="#">зір</a>, <a href="#">міжзоряного газу</a>, <a href="#">пилу</a> та <a href="#">темної матерії</a>, поєднаних <a href="#">силою тяжіння</a>.
-                        </p>
+        const VAT_RATE = 0.20;
 
-                        <p class="article-paragraph">
-                            Типова велика галактика налічує понад 100 мільярдів зір, тоді як <a href="#">карликові галактики</a> можуть містити менш ніж 100 мільйонів зір, а найбільші <a href="#">надгігантські галактики</a> — десятки або навіть близько 100 трильйонів зір. У центрах більшості великих галактик містяться <a href="#">надмасивні чорні діри</a>. Більшу частину загальної маси галактик становить <a href="#">темна матерія</a>, яка утворює навколо них протяжні <a href="#">гало</a>; на зорі та газ припадає лише невелика частина загальної маси, коли до неї включають масу темного гало, хоча ця частка істотно залежить від типу галактики та області, в межах якої визначають її масу.
-                        </p>
+        function ItemCostCalculator(item) {
+            return item.price * item.quantity;
+        }
 
-                        <p class="article-paragraph">
-                            За оцінками, у <a href="#">видимому Всесвіті</a> існує від 200 мільярдів до 2 трильйонів галактик. Розміри галактик можуть становити від кількох сотень до сотень тисяч <a href="#">парсеків</a> залежно від їхнього типу та способу визначення розміру. Вони розподілені у Всесвіті нерівномірно, а відстані між окремими галактиками зазвичай мають порядок мегапарсеків. Галактики часто об'єднані в гравітаційно пов'язані <a href="#">групи</a> та <a href="#">скупчення</a>, які можуть входити до складу <a href="#">надскупчень</a>. На найбільших масштабах галактики розташовані вздовж <a href="#">ниток</a> і <a href="#">стінок</a> космічної павутини, які оточують величезні <a href="#">войди</a> (порожнини). Наша галактика <a href="#">Чумацький Шлях</a> є частиною <a href="#">Місцевої групи</a>, яка розташована на периферії <a href="#">надскупчення Ланіакея</a>.
-                        </p>
-                    </div>
+        function OrderSumCalculator(items, vatRate, vatResultsArray) {
+            let totalOrderCost = 0;
 
-                    <div class="card-footer">
-                        <a href="https://uk.wikipedia.org/wiki/%D0%93%D0%B0%D0%BB%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B0" target="_blank" class="btn-read-more">Читати далі</a>
-                        <a href="#" class="link-all">Усі вибрані статті (252)</a>
-                    </div>
-                </div>
-            </td>
-        </tr>
+            for (let i = 0; i < items.length; i++) {
+                const item = items[i];
+                const itemCost = ItemCostCalculator(item);
+                const itemVat = itemCost * vatRate;
 
-        <tr class="footer-row">
-            <td colspan="2" class="footer-cell">
-                &copy; Вікіпедія — вільна енциклопедія. Усі права захищені. Ліцензія <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.uk" target="_blank" style="color: #e0e6ed; text-decoration: underline;">CC BY-SA 3.0</a> та <a href="https://www.gnu.org/copyleft/fdl.html" target="_blank" style="color: #e0e6ed; text-decoration: underline;">GFDL</a>.
+                vatResultsArray.push({
+                    Назва: item.Назва,
+                    ПДВ: itemVat
+                });
+
+                totalOrderCost += itemCost;
+            }
+
+            return totalOrderCost;
+        }
+
+        const vatList = [];
+        const totalSum = OrderSumCalculator(orderItems, VAT_RATE, vatList);
+
+        console.log(`Загальна вартість замовлення: ${totalSum} грн`);
+        console.log("Результати розрахунку ПДВ для кожного товару:", vatList);
+    </script>
+</body>
+</html>
